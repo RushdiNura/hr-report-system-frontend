@@ -250,7 +250,7 @@
   font-weight: 700;
 }
 .hm-badge-ink { background: var(--info-bg); color: var(--ink); }
-.hm-badge-gold { background: #f3e6c6; color: var(--gold-strong); }
+/* .hm-badge-gold { background: #f3e6c6; color: var(--gold-strong); } */
 .hm-badge-success { background: var(--success-bg); color: var(--success); }
 .hm-badge-info { background: var(--info-bg); color: var(--ink-bright); }
 .hm-badge-warning { background: var(--warning-bg); color: var(--warning); }
