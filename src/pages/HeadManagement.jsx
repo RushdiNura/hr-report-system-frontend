@@ -69,47 +69,47 @@ export default function HeadManagement() {
     fetchHeads();
   }, []);
 
-const handleDeleteHead = async () => {
-  if (!selectedHead) {
-    toast.error("No head selected");
-    return;
-  }
-
-  if (!selectedHead._id) {
-    toast.error("Invalid head data - missing ID");
-    console.error("Selected head missing _id:", selectedHead);
-    setShowDeleteModal(false);
-    setSelectedHead(null);
-    return;
-  }
-
-  setDeleting(true);
-  try {
-    await API.delete(`/auth/heads/${selectedHead._id}`);
-
-    toast.success("Head user deleted successfully");
-    setShowDeleteModal(false);
-    setSelectedHead(null);
-    fetchHeads();
-  } catch (error) {
-    console.error("Error deleting head:", error);
-
-    if (error.response?.status === 401) {
-      toast.error("Your session has expired. Please login again.");
-    } else if (error.response?.status === 403) {
-      toast.error("You don't have permission to delete this user.");
-    } else if (error.response?.status === 404) {
-      toast.error("User not found. It may have been already deleted.");
-    } else {
-      toast.error(
-        error.response?.data?.message || "Failed to delete head user",
-      );
+  const handleDeleteHead = async () => {
+    if (!selectedHead) {
+      toast.error("No head selected");
+      return;
     }
-  } finally {
-    setDeleting(false);
-  }
-};
- 
+
+    if (!selectedHead._id) {
+      toast.error("Invalid head data - missing ID");
+      console.error("Selected head missing _id:", selectedHead);
+      setShowDeleteModal(false);
+      setSelectedHead(null);
+      return;
+    }
+
+    setDeleting(true);
+    try {
+      await API.delete(`/auth/heads/${selectedHead._id}`);
+
+      toast.success("Head user deleted successfully");
+      setShowDeleteModal(false);
+      setSelectedHead(null);
+      fetchHeads();
+    } catch (error) {
+      console.error("Error deleting head:", error);
+
+      if (error.response?.status === 401) {
+        toast.error("Your session has expired. Please login again.");
+      } else if (error.response?.status === 403) {
+        toast.error("You don't have permission to delete this user.");
+      } else if (error.response?.status === 404) {
+        toast.error("User not found. It may have been already deleted.");
+      } else {
+        toast.error(
+          error.response?.data?.message || "Failed to delete head user",
+        );
+      }
+    } finally {
+      setDeleting(false);
+    }
+  };
+
   const filteredHeads = heads.filter((head) => {
     const matchesSearch =
       searchTerm === "" ||
@@ -124,11 +124,27 @@ const handleDeleteHead = async () => {
 
   // Cycles through a small set of design-system-driven tones rather than
   // 12 arbitrary hardcoded hex values that didn't relate to the palette.
-  const departmentTones = ["ink", "gold", "success", "info", "warning", "danger"];
+  const departmentTones = [
+    "ink",
+    "gold",
+    "success",
+    "info",
+    "warning",
+    "danger",
+  ];
+
   const getDepartmentTone = (dept) => {
     if (!dept) return "neutral";
     const index = parseInt(dept.replace("foddaa", ""), 10) || 0;
     return departmentTones[index % departmentTones.length];
+  };
+
+  // "Foddaa:" is already the label right next to this — showing "foddaa5"
+  // is redundant, just show the number.
+  const formatFoddaa = (dept) => {
+    if (!dept) return "N/A";
+    const number = dept.replace(/^foddaa/i, "");
+    return number || dept.toUpperCase();
   };
 
   const departments = [
@@ -268,8 +284,11 @@ const handleDeleteHead = async () => {
                 <div className="hm-head-card-body">
                   <div className="hm-detail-row">
                     <span className="hm-detail-label">Foddaa:</span>
-                    <span className={`hm-department-badge hm-badge-${tone}`}>
+                    {/* <span className={`hm-department-badge hm-badge-${tone}`}>
                       {head.qindeessaa?.toUpperCase() || "N/A"}
+                    </span> */}
+                    <span className={`hm-department-badge hm-badge-${tone}`}>
+                      {formatFoddaa(head.qindeessaa)}
                     </span>
                   </div>
 

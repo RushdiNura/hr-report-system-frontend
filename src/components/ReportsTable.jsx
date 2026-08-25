@@ -76,92 +76,105 @@ const handleDownload = async (fileUrl, filename) => {
     console.error("Download error:", error);
     toast.error("Failed to download file");
   }
+  // };
+  //   return (
+  //     <div className="table-container">
 };
-  return (
-    <div className="table-container">
-      <table className="reports-table">
-        <thead>
+
+// The "Foddaa" column header already says what it is — showing the raw
+// value ("foddaa5") is redundant, so just show the number.
+const formatFoddaa = (value) => {
+  if (!value) return "N/A";
+  const number = value.replace(/^foddaa/i, "");
+  return number || value;
+};
+
+return (
+  <div className="table-container">
+    <table className="reports-table">
+      <thead>
+        <tr>
+          <th>Qindeessaa</th>
+          <th>Foddaa</th>
+          <th>Guyyaa</th>
+          <th>Baay'ina Namoota</th>
+          <th>Faayila</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {reports.length === 0 ? (
           <tr>
-            <th>Qindeessaa</th>
-            <th>Foddaa</th>
-            <th>Guyyaa</th>
-            <th>Baay'ina Namoota</th>
-            <th>Faayila</th>
+            <td colSpan="5" className="empty-state">
+              No reports available
+            </td>
           </tr>
-        </thead>
+        ) : (
+          reports.map((r) => {
+            // Pass both services and extractedTotal to the calculation function
+            const totalPeople = calculateTotalPeopleServed(
+              r.services,
+              r.extractedTotal,
+            );
 
-        <tbody>
-          {reports.length === 0 ? (
-            <tr>
-              <td colSpan="5" className="empty-state">
-                No reports available
-              </td>
-            </tr>
-          ) : (
-            reports.map((r) => {
-              // Pass both services and extractedTotal to the calculation function
-              const totalPeople = calculateTotalPeopleServed(
-                r.services,
-                r.extractedTotal,
-              );
+            return (
+              <tr key={r._id}>
+                <td className="coordinator-cell">
+                  <div className="coordinator-name">{r.coordinatorName}</div>
+                </td>
 
-              return (
-                <tr key={r._id}>
-                  <td className="coordinator-cell">
-                    <div className="coordinator-name">{r.coordinatorName}</div>
-                  </td>
+                <td>
+                  <span className="badge-fooddaa">
+                    {formatFoddaa(r.qindeessaa)}
+                  </span>
+                  {/* <span className="badge-fooddaa">{r.qindeessaa || "N/A"}</span> */}
+                </td>
 
-                  <td>
-                    <span className="badge-fooddaa">
-                      {r.qindeessaa || "N/A"}
-                    </span>
-                  </td>
+                <td className="date-cell">{formatDate(r.coordinatorDate)}</td>
 
-                  <td className="date-cell">{formatDate(r.coordinatorDate)}</td>
-
-                  <td className="text-center">
-                    <span className="people-count-badge">
-                      {totalPeople > 0 ? (
-                        totalPeople
-                      ) : (
-                        <span className="no-file">—</span>
-                      )}
-                      {r.extractedTotal && (
-                        <span
-                          className="extracted-indicator"
-                          title="Extracted from uploaded file"
-                        >
-                          📄
-                        </span>
-                      )}
-                    </span>
-                  </td>
-
-                  <td>
-                    {r.generatedFileUrl ? (
-                      <button
-                        onClick={() => {
-                          // Use the original filename from the database
-                          const filename =
-                            r.generatedFileName || `gabaasa-${r._id}.docx`;
-                          handleDownload(r.generatedFileUrl, filename);
-                        }}
-                        className="icon-btn"
-                        title="Download"
-                      >
-                        <Download size={16} />
-                      </button>
+                <td className="text-center">
+                  <span className="people-count-badge">
+                    {totalPeople > 0 ? (
+                      totalPeople
                     ) : (
                       <span className="no-file">—</span>
                     )}
-                  </td>
-                </tr>
-              );
-            })
-          )}
-        </tbody>
-      </table>
-    </div>
-  );
+                    {r.extractedTotal && (
+                      <span
+                        className="extracted-indicator"
+                        title="Extracted from uploaded file"
+                      >
+                        📄
+                      </span>
+                    )}
+                  </span>
+                </td>
+
+                <td>
+                  {r.generatedFileUrl ? (
+                    <button
+                      onClick={() => {
+                        // Use the original filename from the database
+                        const filename =
+                          r.generatedFileName || `gabaasa-${r._id}.docx`;
+                        handleDownload(r.generatedFileUrl, filename);
+                      }}
+                      className="icon-btn"
+                      title="Download"
+                    >
+                      <Download size={16} />
+                    </button>
+                  ) : (
+                    <span className="no-file">—</span>
+                  )}
+                </td>
+              </tr>
+            );
+          })
+        )}
+      </tbody>
+    </table>
+  </div>
+);
 }
 
