@@ -1,0 +1,397 @@
+.head-management {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  animation: fade-in 0.25s var(--ease);
+}
+
+.hm-loading-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+}
+
+/* ===== Header ===== */
+.hm-page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.hm-page-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0;
+}
+.hm-header-stats {
+  display: flex;
+  gap: 12px;
+}
+.hm-stat-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--info-bg);
+  color: var(--ink);
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* ===== Search + filter ===== */
+.hm-filter-section {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.hm-search-wrapper {
+  position: relative;
+  flex: 1;
+  min-width: 240px;
+}
+.hm-search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-faint);
+}
+.hm-search-input {
+  width: 100%;
+  padding: 11px 14px 11px 40px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
+  font-size: 14px;
+  color: var(--text);
+  font-family: var(--font-body);
+}
+.hm-search-input:focus {
+  outline: none;
+  border-color: var(--ink-bright);
+  box-shadow: 0 0 0 3px rgba(64, 88, 201, 0.15);
+}
+.hm-search-input::placeholder {
+  color: var(--text-faint);
+}
+
+.hm-filter-wrapper {
+  position: relative;
+  min-width: 180px;
+}
+.hm-filter-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-faint);
+  pointer-events: none;
+}
+.hm-filter-select {
+  width: 100%;
+  padding: 11px 14px 11px 40px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
+  font-size: 14px;
+  color: var(--text);
+  font-family: var(--font-body);
+  appearance: none;
+  cursor: pointer;
+}
+.hm-filter-select:focus {
+  outline: none;
+  border-color: var(--ink-bright);
+}
+
+/* ===== Grid ===== */
+.hm-heads-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+}
+
+.hm-empty-state {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 6px;
+  padding: 60px 24px;
+  color: var(--text-faint);
+}
+.hm-empty-state h3 {
+  color: var(--text);
+  font-size: 16px;
+  margin: 12px 0 0;
+}
+.hm-empty-state p {
+  color: var(--text-muted);
+  font-size: 13px;
+  margin: 0 0 12px;
+}
+
+/* ===== Head card ===== */
+.hm-head-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: box-shadow var(--duration-fast) var(--ease), transform var(--duration-fast) var(--ease);
+}
+.hm-head-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+.hm-head-card-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.hm-head-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 16px;
+  flex-shrink: 0;
+  color: #fff;
+}
+.hm-avatar-ink { background: var(--ink); }
+.hm-avatar-gold { background: var(--gold-strong); }
+.hm-avatar-success { background: var(--success); }
+.hm-avatar-info { background: var(--ink-bright); }
+.hm-avatar-warning { background: var(--warning); }
+.hm-avatar-danger { background: var(--danger); }
+.hm-avatar-neutral { background: var(--text-muted); }
+
+.hm-head-info {
+  flex: 1;
+  min-width: 0;
+}
+.hm-head-name {
+  font-size: 15px;
+  font-weight: 700;
+  margin: 0;
+  color: var(--text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.hm-head-email {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  color: var(--text-muted);
+  margin: 3px 0 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.hm-delete-btn {
+  background: none;
+  border: none;
+  color: var(--text-faint);
+  cursor: pointer;
+  padding: 6px;
+  border-radius: var(--radius-sm);
+  flex-shrink: 0;
+}
+.hm-delete-btn:hover {
+  background: var(--danger-bg);
+  color: var(--danger);
+}
+
+.hm-head-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.hm-detail-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+}
+.hm-detail-icon {
+  color: var(--text-faint);
+}
+.hm-detail-label {
+  color: var(--text-muted);
+  font-weight: 600;
+}
+.hm-detail-value {
+  color: var(--text);
+  font-family: var(--font-mono);
+}
+
+.hm-department-badge {
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  font-size: 11px;
+  font-weight: 700;
+}
+.hm-badge-ink { background: var(--info-bg); color: var(--ink); }
+.hm-badge-gold { background: #f3e6c6; color: var(--gold-strong); }
+.hm-badge-success { background: var(--success-bg); color: var(--success); }
+.hm-badge-info { background: var(--info-bg); color: var(--ink-bright); }
+.hm-badge-warning { background: var(--warning-bg); color: var(--warning); }
+.hm-badge-danger { background: var(--danger-bg); color: var(--danger); }
+.hm-badge-neutral { background: var(--border); color: var(--text-muted); }
+[data-theme="dark"] .hm-badge-gold { background: #3a2f14; }
+
+.hm-stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.hm-stat-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg);
+  border-radius: var(--radius-md);
+  padding: 10px 12px;
+}
+.hm-stat-icon {
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+.hm-stat-content {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.hm-stat-value {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+  font-family: var(--font-mono);
+  line-height: 1.2;
+}
+.hm-stat-label {
+  font-size: 10px;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.hm-head-card-footer {
+  border-top: 1px solid var(--border);
+  padding-top: 12px;
+}
+.hm-view-reports-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 9px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color var(--duration-fast) var(--ease), color var(--duration-fast) var(--ease);
+}
+.hm-view-reports-btn:hover {
+  border-color: var(--ink);
+  color: var(--ink);
+}
+
+/* ===== Buttons (shared with modal) ===== */
+.hm-btn-secondary {
+  padding: 10px 18px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.hm-btn-secondary:hover:not(:disabled) {
+  border-color: var(--text-muted);
+}
+.hm-btn-secondary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.hm-btn-danger {
+  padding: 10px 18px;
+  border-radius: var(--radius-md);
+  border: none;
+  background: var(--danger);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  min-width: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hm-btn-danger:hover:not(:disabled) {
+  background: #942f21;
+}
+.hm-btn-danger:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ===== Delete modal ===== */
+.hm-delete-modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+}
+.hm-delete-icon {
+  color: var(--danger);
+  margin-bottom: 4px;
+}
+.hm-delete-modal-title {
+  font-size: 16px;
+  margin: 0;
+}
+.hm-delete-modal-text {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin: 0 0 8px;
+}
+.hm-modal-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+}
+
+@media (max-width: 480px) {
+  .hm-heads-grid {
+    grid-template-columns: 1fr;
+  }
+  .hm-filter-section {
+    flex-direction: column;
+  }
+}

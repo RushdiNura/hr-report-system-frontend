@@ -1,0 +1,71 @@
+.create-user-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 8px;
+}
+
+.create-user-card {
+  width: 100%;
+  max-width: 460px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.create-card-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 4px;
+}
+.create-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  background: var(--info-bg);
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.create-card-header h2 {
+  font-size: 17px;
+  font-weight: 700;
+  margin: 0;
+}
+.create-card-header p {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin: 2px 0 0;
+}
+
+.password-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.password-input-wrapper .input {
+  padding-right: 44px;
+}
+.password-toggle-btn {
+  position: absolute;
+  right: 6px;
+  background: none;
+  border: none;
+  color: var(--text-faint);
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  border-radius: var(--radius-sm);
+}
+.password-toggle-btn:hover {
+  color: var(--text-muted);
+}
+
+.create-submit {
+  width: 100%;
+  padding: 13px;
+  margin-top: 4px;
+}

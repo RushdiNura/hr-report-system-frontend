@@ -1,0 +1,106 @@
+.table-container {
+  overflow-x: auto;
+}
+
+.reports-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  min-width: 640px;
+}
+
+.reports-table thead th {
+  /* text-align: left; */
+  text-align: center;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding: 12px 20px;
+  border-bottom: 1px solid var(--border-strong);
+  background: var(--bg);
+  white-space: nowrap;
+}
+
+.reports-table tbody td {
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+  vertical-align: middle;
+   text-align: center; 
+}
+
+.reports-table tbody tr:hover {
+  background: var(--bg);
+}
+.reports-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.coordinator-cell .coordinator-name {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.badge-fooddaa {
+  display: inline-flex;
+  background: var(--info-bg);
+  color: var(--ink);
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.date-cell {
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.people-count-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.extracted-indicator {
+  font-size: 11px;
+  opacity: 0.8;
+}
+
+.no-file {
+  color: var(--text-faint);
+}
+
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: border-color var(--duration-fast) var(--ease), color var(--duration-fast) var(--ease);
+}
+.icon-btn:hover {
+  border-color: var(--ink);
+  color: var(--ink);
+}
+
+.reports-table tbody td.empty-state {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--text-muted);
+}

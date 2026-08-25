@@ -1,0 +1,167 @@
+/* ============================================================
+   DESIGN TOKENS
+   Identity grounded in the app's existing seal mark (navy ring +
+   gold segments + fingerprint) — an official civic-registry seal.
+   Navy = authority/record-keeping. Gold = the seal itself, used
+   sparingly as an accent, never as a base color.
+   ============================================================ */
+
+:root {
+  /* Brand */
+  --ink: #263b87;
+  --ink-strong: #1c2c68;
+  --ink-bright: #4058c9;
+  --gold: #c79a3a;
+  --gold-strong: #a87e28;
+
+  /* Surfaces */
+  --bg: #f6f3ec;
+  --surface: #ffffff;
+  --surface-raised: #ffffff;
+  --ledger: #dad3c3;
+  --border: #e4ddd0;
+  --border-strong: #cfc6b3;
+
+  /* Text */
+  --text: #1e2436;
+  --text-muted: #6b7280;
+  --text-faint: #9ba0ac;
+  --text-on-ink: #f6f3ec;
+
+  /* Semantic */
+  --success: #2f7d5c;
+  --success-bg: #e6f3ed;
+  --danger: #b3402e;
+  --danger-bg: #fbeae7;
+  --warning: #b8862f;
+  --warning-bg: #f7ecd8;
+  --info: var(--ink-bright);
+  --info-bg: #e9ecfa;
+
+  /* Shape */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-full: 999px;
+
+  /* Elevation — flat + a hairline, not heavy drop shadows */
+  --shadow-sm: 0 1px 2px rgba(30, 36, 54, 0.06);
+  --shadow-md: 0 4px 16px rgba(30, 36, 54, 0.08);
+  --shadow-lg: 0 12px 32px rgba(30, 36, 54, 0.12);
+
+  /* Type */
+  --font-display: "Space Grotesk", "Segoe UI", sans-serif;
+  --font-body: "IBM Plex Sans", "Segoe UI", Roboto, Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+
+  /* Motion */
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-fast: 120ms;
+  --duration: 200ms;
+}
+
+[data-theme="dark"] {
+  --ink: #6d84eb;
+  --ink-strong: #8b9cf0;
+  --ink-bright: #8b9cf0;
+  --gold: #d9ae4e;
+  --gold-strong: #e6bf6a;
+
+  --bg: #0f1428;
+  --surface: #161c38;
+  --surface-raised: #1b2244;
+  --ledger: #2b3560;
+  --border: #2a3358;
+  --border-strong: #3a4570;
+
+  --text: #e7e9f5;
+  --text-muted: #93a0c4;
+  --text-faint: #6b7695;
+  --text-on-ink: #f6f3ec;
+
+  --success: #4caf82;
+  --success-bg: #16332a;
+  --danger: #e5695a;
+  --danger-bg: #3a1d1a;
+  --warning: #d9ae4e;
+  --warning-bg: #362a14;
+  --info: var(--ink-bright);
+  --info-bg: #1c2352;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.45);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  color-scheme: light;
+}
+html[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  transition: background var(--duration) var(--ease), color var(--duration) var(--ease);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  color: var(--text);
+  margin: 0;
+}
+
+a {
+  color: var(--ink-bright);
+}
+
+::selection {
+  background: var(--gold);
+  color: var(--ink-strong);
+}
+
+/* Custom scrollbar — subtle, not the browser default */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: var(--radius-full);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-faint);
+}
+
+:focus-visible {
+  outline: 2px solid var(--ink-bright);
+  outline-offset: 2px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
