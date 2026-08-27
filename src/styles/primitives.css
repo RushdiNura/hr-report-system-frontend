@@ -170,7 +170,7 @@
   line-height: 1.4;
 }
 .badge-ink { background: var(--info-bg); color: var(--ink); }
-/* .badge-gold { background: #f3e6c6; color: var(--gold-strong); } */
+.badge-gold { background: #f3e6c6; color: var(--gold-strong); }
 .badge-success { background: var(--success-bg); color: var(--success); }
 .badge-danger { background: var(--danger-bg); color: var(--danger); }
 .badge-warning { background: var(--warning-bg); color: var(--warning); }
